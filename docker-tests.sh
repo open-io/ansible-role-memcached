@@ -67,7 +67,7 @@ configure_environment() {
     'centos_6')
       run_opts+=('--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro')
       ;;
-    'centos_7'|'fedora_25')
+    'centos_8'|'centos_7'|'fedora_25')
       init=/usr/lib/systemd/systemd
       run_opts+=('--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro')
       ;;
@@ -78,8 +78,8 @@ configure_environment() {
         run_opts+=('--volume=/sys/fs/selinux:/sys/fs/selinux:ro')
       fi
       ;;
-    'ubuntu_16.04'|'debian_8')
-      run_opts=('--volume=/run' '--volume=/run/lock' '--volume=/tmp' '--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro' '--cap-add=SYS_ADMIN' '--cap-add=SYS_RESOURCE')
+    'ubuntu_18.04'|'ubuntu_16.04'|'debian_8')
+      run_opts=('--volume=/run' '--volume=/run/lock' '--volume=/tmp' '--volume=/sys/fs/cgroup:/sys/fs/cgroup:ro' '--cap-add=NET_ADMIN' '--cap-add=SYS_ADMIN' '--cap-add=SYS_RESOURCE')
 
       #if [ -x '/usr/sbin/getenforce' ]; then
       #  run_opts+=('--volume=/sys/fs/selinux:/sys/fs/selinux:ro')
