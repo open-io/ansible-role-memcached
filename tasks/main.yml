@@ -24,7 +24,6 @@
     group: "{{ item.group | default('openio') }}"
     mode: "{{ item.mode | default(0755) }}"
   with_items:
-    - path: "/etc/gridinit.d/{{ openio_memcached_namespace }}"
     - path: "/var/log/oio/sds/{{ openio_memcached_namespace }}/{{ openio_memcached_servicename }}"
       owner: "{{ syslog_user }}"
       mode: "0750"
