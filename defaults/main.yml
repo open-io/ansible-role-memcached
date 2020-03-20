@@ -9,10 +9,10 @@ openio_memcached_bind_address:
 openio_memcached_bind_port: 6019
 openio_memcached_maxconn: 8192
 openio_memcached_cachesize_MBytes: 64
-openio_memcached_gridinit_dir: "/etc/gridinit.d/{{ openio_memcached_namespace }}"
-openio_memcached_gridinit_file_prefix: ""
+openio_memcached_gridinit_dir: "{{ openio_gridinit_d | d('/etc/gridinit.d/' ~ openio_memcached_namespace) }}"
+openio_memcached_gridinit_file_prefix: "{{ namespace }}-"
 openio_memcached_gridinit_on_die: respawn
 openio_memcached_gridinit_start_at_boot: true
-openio_memcached_provision_only: false
+openio_memcached_provision_only: "{{ openio_maintenance_mode | d(false) | bool }}"
 openio_memcached_package_upgrade: "{{ openio_package_upgrade | d(false) }}"
 ...
